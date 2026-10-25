@@ -56,8 +56,8 @@ const DEFAULT_DATA = {
       description: "Kullanıcıların finansal metriklerini, gelir raporlarını ve kullanıcı hareketlerini interaktif grafiklerle takip edebildiği yüksek hızlı analitik platformu. WebSocket desteğiyle anlık veri akışı ve özel dashboard widget'ları içerir.",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80",
       technologies: ["React", "TypeScript", "Tailwind CSS", "Chart.js"],
-      liveUrl: "https://madtech89.github.io",
-      githubUrl: "https://github.com/madtech89",
+      liveUrl: "https://madtechstudio.github.io",
+      githubUrl: "https://github.com/madtechstudio",
       featured: true
     },
     {
@@ -68,8 +68,8 @@ const DEFAULT_DATA = {
       description: "Mobil öncelikli tasarıma sahip, filtreleme, sepet yönetimi, hızlı ödeme simülasyonu ve karanlık mod desteği sunan yeni nesil e-ticaret çözümü.",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80",
       technologies: ["Next.js", "Stripe API", "Node.js", "Zustand"],
-      liveUrl: "https://madtech89.github.io",
-      githubUrl: "https://github.com/madtech89",
+      liveUrl: "https://madtechstudio.github.io",
+      githubUrl: "https://github.com/madtechstudio",
       featured: true
     },
     {
@@ -80,8 +80,8 @@ const DEFAULT_DATA = {
       description: "3D interaktif mikro etkileşimler, glassmorphism estetiği ve dinamik teklif hesaplama modülü barındıran kurumsal tanıtım web sitesi.",
       image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=900&q=80",
       technologies: ["HTML5", "Modern CSS3", "JavaScript", "GSAP"],
-      liveUrl: "https://madtech89.github.io",
-      githubUrl: "https://github.com/madtech89",
+      liveUrl: "https://madtechstudio.github.io",
+      githubUrl: "https://github.com/madtechstudio",
       featured: true
     },
     {
@@ -92,8 +92,8 @@ const DEFAULT_DATA = {
       description: "Kullanıcıların antrenman planlarını özelleştirebildiği, sesli rehberlik ve grafiksel haftalık gelişim raporları sunan responsive hibrit mobil web uygulaması.",
       image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=900&q=80",
       technologies: ["React Native", "Firebase", "Redux", "Expo"],
-      liveUrl: "https://madtech89.github.io",
-      githubUrl: "https://github.com/madtech89",
+      liveUrl: "https://madtechstudio.github.io",
+      githubUrl: "https://github.com/madtechstudio",
       featured: false
     },
     {
@@ -104,8 +104,8 @@ const DEFAULT_DATA = {
       description: "OpenAI ve açık kaynak LLM modellerini kullanarak blog yazıları, kod parçacıkları ve pazarlama metinleri üreten yapay zeka arayüzü ve şablon kütüphanesi.",
       image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=900&q=80",
       technologies: ["Python", "FastAPI", "OpenAI API", "Tailwind"],
-      liveUrl: "https://madtech89.github.io",
-      githubUrl: "https://github.com/madtech89",
+      liveUrl: "https://madtechstudio.github.io",
+      githubUrl: "https://github.com/madtechstudio",
       featured: false
     },
     {
@@ -116,22 +116,22 @@ const DEFAULT_DATA = {
       description: "Binance ve CoinGecko API entegrasyonu ile 500+ kripto para birimini anlık takip eden, Telegram üzerinden fiyat alarmları oluşturan web platformu.",
       image: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&w=900&q=80",
       technologies: ["Vue.js", "WebSocket", "Node.js", "Telegram Bot API"],
-      liveUrl: "https://madtech89.github.io",
-      githubUrl: "https://github.com/madtech89",
+      liveUrl: "https://madtechstudio.github.io",
+      githubUrl: "https://github.com/madtechstudio",
       featured: false
     }
   ],
   socialLinks: [
-    { name: "GitHub", url: "https://github.com/madtech89", icon: "fa-brands fa-github" },
+    { name: "GitHub", url: "https://github.com/madtechstudio", icon: "fa-brands fa-github" },
     { name: "LinkedIn", url: "https://linkedin.com", icon: "fa-brands fa-linkedin-in" },
     { name: "WhatsApp", url: "https://wa.me/905551234567", icon: "fa-brands fa-whatsapp" },
     { name: "Instagram", url: "https://instagram.com", icon: "fa-brands fa-instagram" },
     { name: "E-Posta", url: "mailto:iletisim@madtech.dev", icon: "fa-solid fa-envelope" }
   ],
   seo: {
-    siteTitle: "MadTech | Modern Portfolyo & Proje Tanıtım Sitesi",
-    metaDescription: "MadTech kişisel portfolyo ve proje vitrini. Geliştirdiğim web siteleri, SaaS projeleri ve iletişim bilgileri.",
-    keywords: "madtech, web geliştirici, portfolyo, web siteleri, yazılım geliştirici, frontend, backend"
+    siteTitle: "MadTech Studio | Modern Portfolyo & Proje Tanıtım Vitrini",
+    metaDescription: "MadTech Studio kişisel portfolyo ve proje vitrini. Geliştirdiğim web siteleri, SaaS projeleri ve iletişim bilgileri.",
+    keywords: "madtech, madtech studio, web geliştirici, portfolyo, web siteleri, yazılım geliştirici, frontend, backend"
   }
 };
 

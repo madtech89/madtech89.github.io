@@ -1,9 +1,9 @@
-# 🚀 MadTech - Modern Portfolyo & Proje Tanıtım Vitrini
+# 🚀 MadTech Studio - Modern Portfolyo & Proje Tanıtım Vitrini
 
 Bu proje, **GitHub Pages** üzerinde ücretsiz, yüksek hızlı ve sunucusuz olarak çalışmak üzere tasarlanmış; modern, estetik (Dark Luxury & Glassmorphism) ve **dahili yönetim paneline (Admin Panel)** sahip bir kişisel portfolyo ve proje tanıtım web sitesidir.
 
-Canlı Site Adresi: **[https://madtech89.github.io](https://madtech89.github.io)**  
-Yönetim Paneli Adresi: **[https://madtech89.github.io/admin.html](https://madtech89.github.io/admin.html)**
+Canlı Site Adresi: **[https://madtechstudio.github.io](https://madtechstudio.github.io)**  
+Yönetim Paneli Adresi: **[https://madtechstudio.github.io/admin.html](https://madtechstudio.github.io/admin.html)**
 
 ---
 
@@ -43,7 +43,7 @@ Yönetim Paneli Adresi: **[https://madtech89.github.io/admin.html](https://madte
 ## 📁 Proje Dosya Yapısı
 
 ```text
-madtech89.github.io/
+madtechstudio.github.io/
 ├── index.html            <- Ana vitrin ve portfolyo sayfası
 ├── admin.html            <- Yönetim Paneli (PIN korumalı)
 ├── sitemap.xml           <- Arama motoru site haritası
@@ -61,30 +61,30 @@ madtech89.github.io/
 
 ---
 
-## 🛠️ GitHub Pages'te Canlıya Alma (İlk Kurulum)
+## 🛠️ GitHub Pages'te Canlıya Alma
 
 1. Değişiklikleri GitHub deponuza gönderin:
    ```bash
    git add .
-   git commit -m "MadTech modern portfolio and admin panel kuruldu"
+   git commit -m "Update branding to madtechstudio"
    git push origin main
    ```
 
 2. GitHub deponuzun ayarlarına gidin:
-   - **GitHub.com** -> `madtech89/madtech89.github.io`
+   - **GitHub.com** -> `madtechstudio/madtechstudio.github.io`
    - **Settings** (Ayarlar) sekmesine tıklayın.
    - Sol menüden **Pages** seçeneğine tıklayın.
    - **Build and deployment** altında:
      - **Source:** `Deploy from a branch`
      - **Branch:** `main` / `/(root)` seçili olsun ve **Save** butonuna tıklayın.
 
-3. 1-2 dakika içinde siteniz **`https://madtech89.github.io`** adresinde tüm dünyadan erişilebilir olacaktır! 🎉
+3. Siteniz **`https://madtechstudio.github.io`** adresinde tüm dünyadan erişilebilir olacaktır! 🎉
 
 ---
 
 ## 🔐 Admin Paneli Kullanımı
 
-1. Tarayıcınızdan **`https://madtech89.github.io/admin.html`** adresini açın.
+1. Tarayıcınızdan **`https://madtechstudio.github.io/admin.html`** adresini açın.
 2. PIN kodunuzu girin:
    - **Varsayılan PIN:** `1234`
 3. Profilinizi, telefon numaranızı, WhatsApp'ınızı veya projelerinizi dilediğiniz gibi düzenleyin.
@@ -93,23 +93,12 @@ madtech89.github.io/
 
 #### Yöntem 1: Tek Tıkla Canlı Yayın (Önerilen 🚀)
 1. Admin panelinde **"GitHub'a Yayınla"** sekmesine gelin.
-2. GitHub hesabınızdan 30 saniyede bir Personal Access Token oluşturun:
+2. GitHub hesabınızdan bir Personal Access Token oluşturun:
    - *GitHub -> Settings -> Developer Settings -> Personal access tokens (classic) -> Generate new token*
    - Token yetkisi olarak **"repo"** kutucuğunu işaretleyin.
-3. Token'ı panele yapıştırıp **"Token'ı Kaydet"** butonuna basın. (Bu token sadece sizin tarayıcınızın hafızasında şifreli olarak kalır).
+3. Token'ı panele yapıştırıp **"Token'ı Kaydet"** butonuna basın.
 4. İstediğiniz zaman **"Değişiklikleri GitHub'a Kaydet ve Yayınla"** butonuna basarak tek tıkla canlı siteyi güncelleyebilirsiniz.
 
 #### Yöntem 2: Manuel Güncelleme
 1. Admin panelindeki **"content.json İndir"** butonuna basın.
 2. İndirilen `content.json` dosyasını projenizdeki `data/` klasörüne atıp terminalden `git push` yapın.
-
----
-
-## 🌐 Ücretsiz Özel Alan Adı (Custom Domain) Bağlama
-
-Eğer kendinize ait bir alan adınız varsa (Örn: `mehmetalidag.com` veya `madtech.dev`):
-1. Alan adı sağlayıcınızdan (GoDaddy, Namecheap, Natro vb.) DNS ayarlarına girip bir `CNAME` kaydı ekleyin:
-   - **Host:** `@` veya `www`
-   - **Değer:** `madtech89.github.io`
-2. GitHub deponuzun **Settings -> Pages -> Custom domain** kısmına alan adınızı yazıp kaydedin.
-3. GitHub sizin için ücretsiz **SSL Sertifikası (HTTPS)** otomatik tanımlayacaktır.

@@ -143,7 +143,7 @@ function populateAllFields() {
   // Settings
   const settings = data.settings || {};
   setVal('set-pin', settings.adminPin || DEFAULT_PIN);
-  setVal('set-repo', settings.githubRepo || 'madtech89/madtech89.github.io');
+  setVal('set-repo', settings.githubRepo || 'madtechstudio/madtechstudio.github.io');
   setVal('set-branch', settings.githubBranch || 'main');
 
   // Load saved GitHub Token if any
@@ -273,7 +273,7 @@ function saveStatsAndSocials() {
   ];
 
   window.adminData.socialLinks = [
-    { name: "GitHub", url: getVal('soc-github') || "https://github.com/madtech89", icon: "fa-brands fa-github" },
+    { name: "GitHub", url: getVal('soc-github') || "https://github.com/madtechstudio", icon: "fa-brands fa-github" },
     { name: "LinkedIn", url: getVal('soc-linkedin') || "https://linkedin.com", icon: "fa-brands fa-linkedin-in" },
     { name: "WhatsApp", url: getVal('soc-whatsapp') || "https://wa.me/905551234567", icon: "fa-brands fa-whatsapp" },
     { name: "Instagram", url: getVal('soc-instagram') || "https://instagram.com", icon: "fa-brands fa-instagram" },
@@ -292,14 +292,14 @@ function saveSeoAndSettings() {
     siteTitle: getVal('seo-title'),
     metaDescription: getVal('seo-desc'),
     keywords: getVal('seo-keywords'),
-    author: window.adminData.profile?.brandName || "MadTech",
-    siteUrl: "https://madtech89.github.io"
+    author: window.adminData.profile?.brandName || "MadTech Studio",
+    siteUrl: "https://madtechstudio.github.io"
   };
 
   const newPin = getVal('set-pin') || DEFAULT_PIN;
   window.adminData.settings = {
     adminPin: newPin,
-    githubRepo: getVal('set-repo') || "madtech89/madtech89.github.io",
+    githubRepo: getVal('set-repo') || "madtechstudio/madtechstudio.github.io",
     githubBranch: getVal('set-branch') || "main"
   };
 
@@ -596,7 +596,7 @@ async function publishToGitHub() {
     return;
   }
 
-  const repo = getVal('set-repo') || 'madtech89/madtech89.github.io';
+  const repo = getVal('set-repo') || 'madtechstudio/madtechstudio.github.io';
   const branch = getVal('set-branch') || 'main';
   const filePath = 'data/content.json';
   const apiUrl = `https://api.github.com/repos/${repo}/contents/${filePath}`;
@@ -728,7 +728,7 @@ function importContentJson(e) {
 
 // Generate sitemap.xml
 function generateSitemapXml() {
-  const siteUrl = "https://madtech89.github.io";
+  const siteUrl = "https://madtechstudio.github.io";
   const today = new Date().toISOString().split('T')[0];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -860,7 +860,7 @@ function getDefaultAdminTemplate() {
     },
     settings: {
       adminPin: "1234",
-      githubRepo: "madtech89/madtech89.github.io",
+      githubRepo: "madtechstudio/madtechstudio.github.io",
       githubBranch: "main"
     }
   };
