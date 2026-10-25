@@ -432,7 +432,7 @@ function renderProjectsTable() {
   if (projects.length === 0) {
     tbody.innerHTML = `
       <tr>
-        <td colspan="6" style="text-align: center; color: var(--text-muted); padding: 30px;">
+        <td colspan="7" style="text-align: center; color: var(--text-muted); padding: 30px;">
           Henüz kayıtlı proje yok. "Yeni Proje Ekle" butonunu kullanarak projenizi ekleyin.
         </td>
       </tr>
@@ -441,13 +441,29 @@ function renderProjectsTable() {
   }
 
   tbody.innerHTML = projects.map((p, idx) => `
-    <tr>
+    <tr class="draggable-row" draggable="true" data-id="${p.id}" data-index="${idx}">
+      <td style="width: 85px; text-align: center;">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 4px;">
+          <span class="drag-grip" title="İmleç ile tutup sürükleyerek sıralayın">
+            <i class="fa-solid fa-grip-vertical"></i>
+          </span>
+          <span class="order-badge">#${idx + 1}</span>
+          <div class="order-btn-group">
+            <button type="button" class="btn-order-arrow" onclick="moveProject(${idx}, -1)" ${idx === 0 ? 'disabled' : ''} title="Yukarı Taşı">
+              <i class="fa-solid fa-chevron-up"></i>
+            </button>
+            <button type="button" class="btn-order-arrow" onclick="moveProject(${idx}, 1)" ${idx === projects.length - 1 ? 'disabled' : ''} title="Aşağı Taşı">
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+          </div>
+        </div>
+      </td>
       <td style="width: 70px;">
         <img src="${escapeHtml(p.image || 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=120&q=80')}" class="project-cell-thumb" alt="Kapak">
       </td>
       <td>
         <strong style="color: #fff;">${escapeHtml(p.title)}</strong>
-        <div style="color: var(--text-muted); font-size: 0.8rem; max-width: 280px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+        <div style="color: var(--text-muted); font-size: 0.8rem; max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
           ${escapeHtml(p.summary || '')}
         </div>
       </td>
@@ -472,7 +488,90 @@ function renderProjectsTable() {
       </td>
     </tr>
   `).join('');
+
+  attachProjectDragAndDrop();
 }
+
+// Drag & Drop HTML5 Handler for Project Rows
+function attachProjectDragAndDrop() {
+  const tbody = document.getElementById('projects-table-body');
+  if (!tbody) return;
+
+  const rows = tbody.querySelectorAll('.draggable-row');
+  let draggedIndex = null;
+
+  rows.forEach(row => {
+    row.addEventListener('dragstart', (e) => {
+      draggedIndex = parseInt(row.getAttribute('data-index'));
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/plain', String(draggedIndex));
+      setTimeout(() => row.classList.add('dragging'), 0);
+    });
+
+    row.addEventListener('dragend', () => {
+      rows.forEach(r => r.classList.remove('dragging', 'drag-over-top', 'drag-over-bottom'));
+    });
+
+    row.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+      const rect = row.getBoundingClientRect();
+      const midY = rect.top + rect.height / 2;
+      if (e.clientY < midY) {
+        row.classList.add('drag-over-top');
+        row.classList.remove('drag-over-bottom');
+      } else {
+        row.classList.add('drag-over-bottom');
+        row.classList.remove('drag-over-top');
+      }
+    });
+
+    row.addEventListener('dragleave', () => {
+      row.classList.remove('drag-over-top', 'drag-over-bottom');
+    });
+
+    row.addEventListener('drop', (e) => {
+      e.preventDefault();
+      row.classList.remove('drag-over-top', 'drag-over-bottom');
+      const targetIndex = parseInt(row.getAttribute('data-index'));
+
+      if (draggedIndex === null || isNaN(draggedIndex) || draggedIndex === targetIndex) return;
+
+      const rect = row.getBoundingClientRect();
+      const midY = rect.top + rect.height / 2;
+      let insertIndex = targetIndex;
+
+      if (e.clientY >= midY && draggedIndex < targetIndex) {
+        insertIndex = targetIndex;
+      } else if (e.clientY < midY && draggedIndex > targetIndex) {
+        insertIndex = targetIndex;
+      }
+
+      insertIndex = Math.max(0, Math.min(window.adminData.projects.length - 1, insertIndex));
+
+      const item = window.adminData.projects.splice(draggedIndex, 1)[0];
+      window.adminData.projects.splice(insertIndex, 0, item);
+
+      saveToLocalCache();
+      renderProjectsTable();
+      showToast(`"${item.title}" #${insertIndex + 1} sırasına taşındı! ⚠️ Canlıya göndermek için "Canlıya Yayınla" butonuna basın.`, 'success');
+    });
+  });
+}
+
+// Arrow Button Move (Mobile & Click Friendly)
+window.moveProject = function(idx, direction) {
+  if (!window.adminData?.projects) return;
+  const targetIdx = idx + direction;
+  if (targetIdx < 0 || targetIdx >= window.adminData.projects.length) return;
+
+  const item = window.adminData.projects.splice(idx, 1)[0];
+  window.adminData.projects.splice(targetIdx, 0, item);
+
+  saveToLocalCache();
+  renderProjectsTable();
+  showToast(`"${item.title}" #${targetIdx + 1} sırasına taşındı! ⚠️ Canlıya aktarmak için "Canlıya Yayınla" butonuna basın.`, 'success');
+};
 
 function initProjectModal() {
   const modal = document.getElementById('project-modal');

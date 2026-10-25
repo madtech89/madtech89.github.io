@@ -302,9 +302,17 @@
             </div>
 
             <div class="projects-table-wrap">
+              <div style="background: rgba(0, 242, 254, 0.08); border: 1px solid rgba(0, 242, 254, 0.25); border-radius: var(--radius-md); padding: 12px 18px; margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+                <span style="font-size: 0.88rem; color: #fff;">
+                  <i class="fa-solid fa-arrows-up-down" style="color: var(--primary); margin-right: 8px;"></i>
+                  <strong>Sıralama Özelliği:</strong> Projelerin sırasını değiştirmek için solundaki tutamacı ( <i class="fa-solid fa-grip-vertical" style="color: var(--primary);"></i> ) tutup sürükleyebilir veya ok butonlarına (↑ / ↓) basabilirsiniz. <strong>En üstteki proje ana sayfanızda ilk görünür!</strong>
+                </span>
+              </div>
+
               <table class="admin-table">
                 <thead>
                   <tr>
+                    <th style="width: 80px; text-align: center;">Sıra</th>
                     <th>Görsel</th>
                     <th>Proje Başlığı</th>
                     <th>Kategori</th>
@@ -314,7 +322,7 @@
                   </tr>
                 </thead>
                 <tbody id="projects-table-body">
-                  <!-- Populated by admin.js -->
+                  <!-- Populated by admin.js with drag & drop -->
                 </tbody>
               </table>
             </div>
