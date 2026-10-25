@@ -255,6 +255,89 @@ function initForms() {
       if (img) img.src = avatarInput.value.trim();
     });
   }
+
+  // Direct Profile Avatar File Upload & Compression
+  setupImageUpload('prof-avatar-file', 'prof-avatar-preview', 'prof-avatar', 500);
+
+  // Toggle Avatar URL Box
+  const btnToggleAvatar = document.getElementById('btn-toggle-avatar-url');
+  const avatarUrlWrapper = document.getElementById('avatar-url-wrapper');
+  if (btnToggleAvatar && avatarUrlWrapper) {
+    btnToggleAvatar.addEventListener('click', () => {
+      const isHidden = avatarUrlWrapper.style.display === 'none';
+      avatarUrlWrapper.style.display = isHidden ? 'block' : 'none';
+    });
+  }
+
+  // Direct Project Image File Upload & Compression
+  setupImageUpload('proj-image-file', 'modal-project-img-preview', 'proj-image', 900);
+
+  // Toggle Project URL Box
+  const btnToggleProjUrl = document.getElementById('btn-toggle-proj-url');
+  const projUrlWrapper = document.getElementById('proj-url-wrapper');
+  if (btnToggleProjUrl && projUrlWrapper) {
+    btnToggleProjUrl.addEventListener('click', () => {
+      const isHidden = projUrlWrapper.style.display === 'none';
+      projUrlWrapper.style.display = isHidden ? 'block' : 'none';
+    });
+  }
+}
+
+// Client-side Image Upload & Auto-Compressor
+function setupImageUpload(fileInputId, previewImgId, hiddenInputId, maxDimension = 600) {
+  const fileInput = document.getElementById(fileInputId);
+  const previewImg = document.getElementById(previewImgId);
+  const hiddenInput = document.getElementById(hiddenInputId);
+
+  if (!fileInput) return;
+
+  fileInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    if (!file.type.startsWith('image/')) {
+      showToast('Lütfen geçerli bir resim dosyası seçin (JPG, PNG, WebP).', 'error');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const img = new Image();
+      img.onload = () => {
+        // High quality canvas compression
+        const canvas = document.createElement('canvas');
+        let width = img.width;
+        let height = img.height;
+
+        if (width > height) {
+          if (width > maxDimension) {
+            height = Math.round((height * maxDimension) / width);
+            width = maxDimension;
+          }
+        } else {
+          if (height > maxDimension) {
+            width = Math.round((width * maxDimension) / height);
+            height = maxDimension;
+          }
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, width, height);
+
+        // Convert to optimized JPEG data string
+        const compressedBase64 = canvas.toDataURL('image/jpeg', 0.88);
+
+        if (previewImg) previewImg.src = compressedBase64;
+        if (hiddenInput) hiddenInput.value = compressedBase64;
+
+        showToast('Fotoğraf başarıyla yüklendi ve optimize edildi!', 'success');
+      };
+      img.src = event.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
 }
 
 // Save Profile
@@ -432,6 +515,9 @@ window.editProject = function(id) {
   setVal('proj-techs', (p.technologies || []).join(', '));
   setVal('proj-live', p.liveUrl);
   setVal('proj-github', p.githubUrl);
+
+  const prev = document.getElementById('modal-project-img-preview');
+  if (prev && p.image) prev.src = p.image;
 
   const featuredCheck = document.getElementById('proj-featured');
   if (featuredCheck) featuredCheck.checked = !!p.featured;

@@ -231,16 +231,34 @@
                   <input type="text" id="prof-cv" class="form-input" placeholder="https://drive.google.com/...">
                 </div>
 
-                <div class="form-group">
-                  <label class="form-label" for="prof-avatar">Profil Fotoğrafı / Avatar URL</label>
-                  <input type="text" id="prof-avatar" class="form-input" placeholder="https://images.unsplash.com/...">
-                </div>
+                <div class="form-group form-full">
+                  <label class="form-label">Profil Fotoğrafı</label>
+                  <div style="display: flex; align-items: center; gap: 24px; flex-wrap: wrap; background: rgba(7, 9, 14, 0.6); padding: 20px; border-radius: var(--radius-md); border: 1px dashed var(--admin-border-focus);">
+                    <!-- Avatar Preview -->
+                    <div style="position: relative;">
+                      <img id="prof-avatar-preview" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" style="width: 84px; height: 84px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); box-shadow: 0 0 20px rgba(0,242,254,0.35);" alt="Avatar Önizleme">
+                    </div>
 
-                <div class="form-group form-full" style="display: flex; align-items: center; gap: 20px;">
-                  <img id="prof-avatar-preview" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary);" alt="Avatar Önizleme">
-                  <div>
-                    <strong style="color: #fff; font-size: 0.9rem;">Fotoğraf Önizleme</strong>
-                    <p style="color: var(--text-muted); font-size: 0.8rem;">İstediğiniz bir resim linkini veya Unsplash/GitHub profil resminizi yukarıya yapıştırabilirsiniz.</p>
+                    <!-- Direct File Upload Controls -->
+                    <div style="flex: 1; min-width: 240px;">
+                      <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 8px; flex-wrap: wrap;">
+                        <label class="btn btn-primary" style="cursor: pointer; padding: 9px 18px; font-size: 0.88rem;">
+                          <i class="fa-solid fa-cloud-arrow-up"></i> Bilgisayardan Fotoğraf Yükle
+                          <input type="file" id="prof-avatar-file" accept="image/*" style="display: none;">
+                        </label>
+                        <button type="button" class="btn btn-outline btn-sm" id="btn-toggle-avatar-url">
+                          <i class="fa-solid fa-link"></i> Web Linkiyle Gir
+                        </button>
+                      </div>
+                      <p style="color: var(--text-muted); font-size: 0.8rem;">
+                        Bilgisayarınızdan istediğiniz resmi (JPG, PNG, WebP) seçin. Sistem otomatik olarak optimize edip profile işler.
+                      </p>
+
+                      <!-- Hidden/Collapsible URL input -->
+                      <div id="avatar-url-wrapper" style="display: none; margin-top: 10px;">
+                        <input type="text" id="prof-avatar" class="form-input" placeholder="https://images.unsplash.com/... (veya doğrudan dosya yükleyin)">
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -638,9 +656,26 @@
               </select>
             </div>
 
-            <div class="form-group">
-              <label class="form-label" for="proj-image">Kapak Görseli URL</label>
-              <input type="text" id="proj-image" class="form-input" placeholder="https://images.unsplash.com/...">
+            <div class="form-group form-full">
+              <label class="form-label">Proje Kapak Görseli</label>
+              <div style="display: flex; align-items: center; gap: 16px; background: rgba(7, 9, 14, 0.6); padding: 14px; border-radius: var(--radius-md); border: 1px dashed var(--admin-border-focus); flex-wrap: wrap;">
+                <img id="modal-project-img-preview" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=140&q=80" style="width: 72px; height: 50px; border-radius: 6px; object-fit: cover; border: 1px solid var(--admin-border);" alt="Önizleme">
+                
+                <div style="flex: 1; min-width: 200px;">
+                  <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 6px;">
+                    <label class="btn btn-primary btn-sm" style="cursor: pointer;">
+                      <i class="fa-solid fa-cloud-arrow-up"></i> Bilgisayardan Görsel Seç
+                      <input type="file" id="proj-image-file" accept="image/*" style="display: none;">
+                    </label>
+                    <button type="button" class="btn btn-outline btn-sm" id="btn-toggle-proj-url">
+                      <i class="fa-solid fa-link"></i> URL Gir
+                    </button>
+                  </div>
+                  <div id="proj-url-wrapper" style="display: none; margin-top: 8px;">
+                    <input type="text" id="proj-image" class="form-input" placeholder="https://images.unsplash.com/...">
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div class="form-group form-full">
