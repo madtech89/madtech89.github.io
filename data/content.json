@@ -115,7 +115,7 @@
       ],
       "liveUrl": "https://doxivault.com",
       "githubUrl": "",
-      "featured": true
+      "featured": false
     },
     {
       "id": "proj-1792923204394",
@@ -132,7 +132,7 @@
       ],
       "liveUrl": "https://dthalukacun.com.tr",
       "githubUrl": "",
-      "featured": true
+      "featured": false
     },
     {
       "id": "proj-1792923044769",
@@ -190,7 +190,7 @@
       "technologies": [],
       "liveUrl": "https://zeryatemizlik.com",
       "githubUrl": "",
-      "featured": true
+      "featured": false
     },
     {
       "id": "proj-2",
