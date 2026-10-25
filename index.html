@@ -1,10 +1,449 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <title>Madtech89 Web Sitesi</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>MadTech | Modern Portfolyo & Proje Tanıtım Sitesi</title>
+  <meta name="description" content="MadTech kişisel portfolyo ve proje vitrini. Geliştirdiğim web siteleri, SaaS projeleri, mobil uygulamalar ve iletişim bilgileri.">
+  <meta name="keywords" content="madtech, web geliştirici, portfolyo, web siteleri, yazılım geliştirici, frontend, backend, mehmet ali dağ, github pages">
+  <meta name="author" content="MadTech">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://madtech89.github.io/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://madtech89.github.io/">
+  <meta property="og:title" content="MadTech | Modern Portfolyo & Proje Tanıtım Sitesi">
+  <meta property="og:description" content="Geliştirdiğim web siteleri, SaaS projeleri, mobil uygulamalar ve canlı demolar.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MadTech | Modern Portfolyo & Proje Tanıtım Sitesi">
+  <meta name="twitter:description" content="Geliştirdiğim web siteleri ve projeleri inceleyin.">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%2300f2fe'/><text y='65' x='50' text-anchor='middle' font-size='50' font-family='sans-serif' font-weight='900' fill='%2307090e'>M</text></svg>">
+
+  <!-- Google Fonts & Font Awesome 6 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Tebrikler! madtech89.github.io sitesi başarıyla kuruldu.</h1>
-</td>
+
+  <!-- Ambient Glowing Background Blobs -->
+  <div class="bg-ambient" aria-hidden="true">
+    <div class="ambient-blob blob-1"></div>
+    <div class="ambient-blob blob-2"></div>
+    <div class="ambient-blob blob-3"></div>
+  </div>
+
+  <!-- Header / Navigation -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#hero" class="logo" id="nav-brand-logo">
+        <div class="logo-badge">M</div>
+        <div class="logo-text"><span id="brand-name">MadTech</span></div>
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#hero" class="nav-link" id="nav-home">Ana Sayfa</a></li>
+        <li><a href="#projects" class="nav-link" id="nav-projects">Projelerim</a></li>
+        <li><a href="#skills" class="nav-link" id="nav-skills">Yetenekler</a></li>
+        <li><a href="#about" class="nav-link" id="nav-about">Hakkımda</a></li>
+        <li><a href="#contact" class="nav-link" id="nav-contact">İletişim</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="admin.html" class="btn-admin-link" id="btn-nav-admin" title="Yönetim Paneli">
+          <i class="fa-solid fa-gear"></i> Admin
+        </a>
+        <a href="#contact" class="btn btn-primary" id="btn-nav-cta" style="padding: 9px 20px; font-size: 0.88rem;">
+          <i class="fa-solid fa-paper-plane"></i> İletişim
+        </a>
+        <button class="hamburger" id="hamburger-btn" aria-label="Menüyü Aç/Kapat">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-status-pill" id="hero-status-pill">
+            <span class="status-dot"></span>
+            <span id="status-text">Yeni Projelere Açık 🚀</span>
+          </div>
+
+          <h1 class="hero-title">
+            Merhaba, Ben <span id="hero-name" style="background: var(--grad-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Mehmet Ali</span><br>
+            <div class="typed-wrapper">
+              <span id="typed-text"></span><span class="typing-cursor">|</span>
+            </div>
+          </h1>
+
+          <p class="hero-description" id="hero-bio">
+            Modern, hızlı ve estetik dijital deneyimler tasarlıyor; fikirlerinizi web dünyasında fark yaratan projelere dönüştürüyorum.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary" id="hero-btn-projects">
+              <i class="fa-solid fa-laptop-code"></i> Projelerimi İncele
+            </a>
+            <a href="#contact" class="btn btn-outline" id="hero-btn-contact">
+              <i class="fa-solid fa-comments"></i> İletişime Geç
+            </a>
+            <a href="#contact" class="btn btn-whatsapp" id="hero-btn-wa" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-whatsapp"></i> WhatsApp'tan Yaz
+            </a>
+          </div>
+        </div>
+
+        <!-- 3D Profile Card -->
+        <div class="hero-visual">
+          <div class="profile-card-3d">
+            <!-- Floating Badge Top Right -->
+            <div class="floating-badge badge-top-right">
+              <i class="fa-solid fa-shield-halved" style="color: var(--primary);"></i>
+              <span>%100 Güvenilir Kod</span>
+            </div>
+
+            <div class="avatar-wrapper">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="MadTech Profil" id="profile-avatar">
+              <div class="avatar-overlay-gradient"></div>
+            </div>
+
+            <div class="profile-card-info">
+              <h3 id="profile-card-name">Mehmet Ali Dağ</h3>
+              <p id="profile-card-title">Full Stack Web Geliştirici</p>
+            </div>
+
+            <div class="profile-quick-contact">
+              <div class="contact-quick-item">
+                <i class="fa-solid fa-phone"></i>
+                <span id="quick-phone">+90 555 123 45 67</span>
+              </div>
+              <div class="contact-quick-item">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Türkiye</span>
+              </div>
+            </div>
+
+            <!-- Floating Badge Bottom Left -->
+            <div class="floating-badge badge-bottom-left">
+              <i class="fa-solid fa-bolt" style="color: #10b981;"></i>
+              <span>Ultra Hızlı Yükleme</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Bar Section -->
+    <section class="stats-section" id="stats">
+      <div class="container">
+        <div class="stats-grid" id="stats-grid">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects / Portfolio Section -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag"><i class="fa-solid fa-fire"></i> Portfolyo & Vitrin</div>
+          <h2 class="section-title">Geliştirdiğim Projeler & Web Siteleri</h2>
+          <p class="section-desc">
+            Canlıda yayında olan web sitelerim, SaaS platformlarım ve açık kaynak kodlu projelerim. Detayları görmek ve canlı siteleri ziyaret etmek için kartlara göz atın.
+          </p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs" id="project-filters">
+          <button class="filter-btn active" data-filter="all" id="filter-all">Tümü</button>
+          <button class="filter-btn" data-filter="web" id="filter-web">Web Siteleri</button>
+          <button class="filter-btn" data-filter="ecommerce" id="filter-ecommerce">E-Ticaret</button>
+          <button class="filter-btn" data-filter="corporate" id="filter-corporate">Kurumsal</button>
+          <button class="filter-btn" data-filter="mobile" id="filter-mobile">Mobil</button>
+          <button class="filter-btn" data-filter="ai" id="filter-ai">Yapay Zeka</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid" id="projects-grid">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills & Services Section -->
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag"><i class="fa-solid fa-layer-group"></i> Yetenekler & Çözümler</div>
+          <h2 class="section-title">Teknolojik Uzmanlık Alanlarım</h2>
+          <p class="section-desc">
+            Projelerimde kullandığım modern teknolojiler, kütüphaneler ve geliştirme araçları.
+          </p>
+        </div>
+
+        <div class="skills-grid" id="skills-grid">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="about-text-content">
+          <div class="section-tag"><i class="fa-solid fa-user-astronaut"></i> Hakkımda</div>
+          <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">Fikirleri Güçlü Dijital Çözümlere Dönüştürüyorum</h2>
+          <p class="section-desc" id="about-text" style="text-align: left; margin-bottom: 24px; line-height: 1.8;">
+            Merhaba! Yazılım geliştirme ve modern web teknolojileri alanında kullanıcı odaklı, ölçeklenebilir ve yüksek performanslı çözümler üretiyorum. Kurumsal web sitelerinden SaaS platformlarına, e-ticaret sistemlerinden API entegrasyonlarına kadar uçtan uca modern mimariler inşa ediyorum.
+          </p>
+
+          <div style="display: flex; gap: 16px; margin-top: 30px;">
+            <a href="#contact" class="btn btn-primary" id="about-btn-contact">
+              <i class="fa-solid fa-handshake"></i> Birlikte Çalışalım
+            </a>
+            <a href="#projects" class="btn btn-outline" id="about-btn-work">
+              <i class="fa-solid fa-folder-open"></i> Projeler
+            </a>
+          </div>
+        </div>
+
+        <div class="about-features">
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fa-solid fa-code"></i></div>
+            <div class="feature-content">
+              <h4>Modern & Temiz Kod Mimarisi</h4>
+              <p>Kolay yönetilebilir, modüler, sürdürülebilir ve endüstri standardı kod yapıları.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon" style="background: var(--grad-primary); color: #000;"><i class="fa-solid fa-gauge-high"></i></div>
+            <div class="feature-content">
+              <h4>Maksimum Performans & SEO</h4>
+              <p>Google Lighthouse 95+ skor hedefi, anında açılan sayfalar ve arama motoru optimizasyonu.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);"><i class="fa-solid fa-mobile-screen"></i></div>
+            <div class="feature-content">
+              <h4>%100 Mobil & Responsive Tasarım</h4>
+              <p>Akıllı telefon, tablet ve masaüstü bilgisayarlarda kusursuz çalışan esnek arayüzler.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag"><i class="fa-solid fa-envelope-open-text"></i> İletişim</div>
+          <h2 class="section-title">Birlikte Yeni Bir Proje Başlatalım</h2>
+          <p class="section-desc">
+            Web sitesi yaptırmak, mevcut projenizi geliştirmek veya aklınızdaki bir fikri hayata geçirmek için doğrudan bana ulaşabilirsiniz.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Contact Direct Links -->
+          <div class="contact-info-panel">
+            <!-- Phone -->
+            <a href="#" class="contact-card-link" id="contact-phone-link">
+              <div class="contact-icon-box">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Telefon Numarası</h4>
+                <p id="contact-phone-text">+90 555 123 45 67</p>
+              </div>
+            </a>
+
+            <!-- WhatsApp Direct -->
+            <a href="#" class="contact-card-link whatsapp-card" id="contact-wa-link" target="_blank" rel="noopener noreferrer">
+              <div class="contact-icon-box">
+                <i class="fa-brands fa-whatsapp"></i>
+              </div>
+              <div class="contact-details">
+                <h4>WhatsApp Hattı</h4>
+                <p id="contact-wa-text">+90 555 123 45 67 (Anında Yanıt)</p>
+              </div>
+            </a>
+
+            <!-- Email -->
+            <a href="#" class="contact-card-link" id="contact-email-link">
+              <div class="contact-icon-box">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <div class="contact-details">
+                <h4>E-Posta Adresi</h4>
+                <p id="contact-email-text">iletisim@madtech.dev</p>
+              </div>
+            </a>
+
+            <!-- Location -->
+            <div class="contact-card-link">
+              <div class="contact-icon-box">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Konum / Şehir</h4>
+                <p id="contact-location-text">İstanbul, Türkiye</p>
+              </div>
+            </div>
+
+            <!-- Social Links -->
+            <div style="margin-top: 10px;">
+              <h4 style="font-size: 0.95rem; margin-bottom: 12px; color: var(--text-muted);">Sosyal Ağlar & Bağlantılar:</h4>
+              <div class="social-links-bar" id="social-links-bar">
+                <!-- Populated by JavaScript -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Message Form -->
+          <div class="contact-form-box">
+            <h3>Hızlı Mesaj Gönderin</h3>
+            <p>Formu doldurarak projeniz hakkında detay paylaşın, mesajınız otomatik WhatsApp üzerinden hazır iletilsin.</p>
+
+            <form id="contact-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="form-name" class="form-label">Adınız Soyadınız *</label>
+                  <input type="text" id="form-name" class="form-input" placeholder="Örn: Ahmet Yılmaz" required>
+                </div>
+                <div class="form-group">
+                  <label for="form-email" class="form-label">E-Posta Adresiniz</label>
+                  <input type="email" id="form-email" class="form-input" placeholder="ahmet@ornek.com">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="form-subject" class="form-label">Proje Konusu</label>
+                <input type="text" id="form-subject" class="form-input" placeholder="Örn: Kurumsal Web Sitesi & E-Ticaret">
+              </div>
+
+              <div class="form-group">
+                <label for="form-message" class="form-label">Mesajınız *</label>
+                <textarea id="form-message" class="form-textarea" placeholder="Projenizden veya aklınızdaki fikirden kısaca bahsedin..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" id="btn-submit-contact" style="width: 100%;">
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp Üzerinden Gönder
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="logo" style="margin-bottom: 14px;">
+            <div class="logo-badge">M</div>
+            <div class="logo-text"><span id="brand-name-footer">MadTech</span></div>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 320px; line-height: 1.6;">
+            Modern web teknolojileri ile geliştirilen projeler, kurumsal siteler ve dijital çözümler vitrini.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Hızlı Bağlantılar</h4>
+          <ul class="footer-links">
+            <li><a href="#hero">Ana Sayfa</a></li>
+            <li><a href="#projects">Projelerim</a></li>
+            <li><a href="#skills">Yetenekler</a></li>
+            <li><a href="#about">Hakkımda</a></li>
+            <li><a href="#contact">İletişim</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Yönetim & SEO</h4>
+          <ul class="footer-links">
+            <li><a href="admin.html"><i class="fa-solid fa-lock" style="font-size: 0.8rem; margin-right: 6px;"></i> Admin Paneli</a></li>
+            <li><a href="sitemap.xml" target="_blank"><i class="fa-solid fa-sitemap" style="font-size: 0.8rem; margin-right: 6px;"></i> Site Haritası (sitemap.xml)</a></li>
+            <li><a href="robots.txt" target="_blank"><i class="fa-solid fa-robot" style="font-size: 0.8rem; margin-right: 6px;"></i> robots.txt</a></li>
+            <li><a href="https://github.com/madtech89/madtech89.github.io" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" style="font-size: 0.8rem; margin-right: 6px;"></i> GitHub Kaynak Kodu</a></li>
+          </ul>
+          <div class="social-links-bar" id="footer-socials" style="margin-top: 16px;"></div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; <span id="current-year"></span> MadTech. Tüm hakları saklıdır. GitHub Pages ile ücretsiz barındırılmaktadır.</div>
+        <div>
+          <a href="admin.html" style="color: var(--text-muted); font-size: 0.8rem;">
+            <i class="fa-solid fa-gear"></i> İçerik Yönetim Paneli
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Project Detail Modal -->
+  <div class="modal-overlay" id="project-modal" role="dialog" aria-modal="true">
+    <div class="modal-container">
+      <button class="modal-close-btn" onclick="closeProjectModal()" aria-label="Kapat">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="modal-image-box">
+        <img src="" alt="Proje Görseli" id="modal-img">
+      </div>
+      <div class="modal-body">
+        <h2 id="modal-title" style="font-size: 1.8rem; margin-bottom: 12px;"></h2>
+        <div class="modal-tech-list" id="modal-techs"></div>
+        <p id="modal-desc" style="color: var(--text-muted); font-size: 1rem; line-height: 1.7;"></p>
+        <div class="modal-actions">
+          <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="modal-live-link">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Canlı Siteyi Ziyaret Et
+          </a>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline" id="modal-github-link">
+            <i class="fa-brands fa-github"></i> GitHub Deposunu Gör
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating WhatsApp Quick Button -->
+  <a href="#" class="floating-whatsapp" id="floating-wa-btn" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp İletişim">
+    <span class="whatsapp-pulse"></span>
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <!-- Scroll To Top Button -->
+  <button class="scroll-top-btn" id="scroll-top-btn" aria-label="Yukarı Çık">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Main JavaScript Engine -->
+  <script src="js/main.js"></script>
+</body>
 </html>
