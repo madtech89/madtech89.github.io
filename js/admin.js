@@ -218,6 +218,11 @@ function initNavigation() {
   });
 }
 
+window.goToPublishTab = function() {
+  const pubLink = document.querySelector('.sidebar-link[data-tab="tab-publish"]');
+  if (pubLink) pubLink.click();
+};
+
 // Forms Initialization
 function initForms() {
   // Profile Form
@@ -366,7 +371,7 @@ function saveProfile() {
   };
 
   saveToLocalCache();
-  showToast('Profil ve İletişim bilgileri başarıyla güncellendi!', 'success');
+  showToast('Kaydedildi! ⚠️ Başkalarının da görmesi için üstteki "Canlıya Yayınla" butonuna basmayı unutmayın.', 'success');
 }
 
 // Save Stats & Socials
@@ -565,6 +570,7 @@ function saveProjectModal() {
   renderProjectsTable();
   updateTopCounters();
   modal.classList.remove('active');
+  showToast('Proje kaydedildi! ⚠️ Canlıya aktarmak için "Canlıya Yayınla" butonuna basın.', 'success');
 }
 
 window.deleteProject = function(id) {

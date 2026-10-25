@@ -132,10 +132,24 @@
           </div>
 
           <a href="index.html" target="_blank" class="btn btn-outline btn-sm">
-            <i class="fa-solid fa-eye"></i> Canlı Önizleme
+            <i class="fa-solid fa-eye"></i> Önizleme
           </a>
+          <button type="button" class="btn btn-primary btn-sm" id="btn-topbar-publish" onclick="goToPublishTab()" style="font-weight: 700;">
+            <i class="fa-solid fa-cloud-arrow-up"></i> Canlıya Yayınla 🚀
+          </button>
         </div>
       </header>
+
+      <!-- Reminder Banner for Global Sync -->
+      <div id="admin-sync-reminder-bar" style="background: linear-gradient(90deg, rgba(0, 242, 254, 0.15) 0%, rgba(121, 40, 202, 0.15) 100%); border-bottom: 1px solid rgba(0, 242, 254, 0.3); padding: 12px 32px; font-size: 0.88rem; color: #fff; display: flex; align-items: center; justify-content: space-between; flex-wrap: gap;">
+        <div>
+          <i class="fa-solid fa-globe" style="color: #00f2fe; margin-right: 8px;"></i>
+          <strong>Başkalarının da Görmesi İçin:</strong> Değişiklikleriniz tarayıcınıza kaydedildi. Tüm dünyada görünmesi için <strong>"Canlıya Yayınla"</strong> butonuna tıklayarak GitHub'a göndermeyi unutmayın!
+        </div>
+        <button type="button" class="btn btn-primary btn-sm" onclick="goToPublishTab()" style="padding: 6px 14px; font-size: 0.8rem; white-space: nowrap;">
+          <i class="fa-solid fa-cloud-arrow-up"></i> GitHub'a Gönder
+        </button>
+      </div>
 
       <!-- Content Views -->
       <div class="admin-content">
