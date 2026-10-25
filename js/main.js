@@ -186,8 +186,8 @@ function renderApp() {
 
   // Brand & Profile
   const profile = data.profile || {};
-  setText('brand-name', profile.brandName || 'MadTech');
-  setText('brand-name-footer', profile.brandName || 'MadTech');
+  setText('brand-name', profile.brandName || 'Madtech Studio');
+  setText('brand-name-footer', profile.brandName || 'Madtech Studio');
   setText('hero-name', profile.name || 'Mehmet Ali');
   setText('hero-bio', profile.shortBio || '');
   setText('about-text', profile.aboutText || '');

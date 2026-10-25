@@ -66,7 +66,7 @@
           <div style="width: 36px; height: 36px; border-radius: 9px; background: #fff; overflow: hidden; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 14px rgba(0,242,254,0.4); border: 1.5px solid rgba(0,242,254,0.6); flex-shrink: 0;">
             <img src="assets/logo.jpg" alt="MadTech Logo" style="width: 100%; height: 100%; object-fit: cover;">
           </div>
-          <span>MadTech</span>
+          <span>Madtech Studio</span>
         </div>
         <span class="sidebar-badge">Admin</span>
       </div>
@@ -161,37 +161,90 @@
              ========================================== -->
         <div class="admin-tab-pane active" id="tab-profile">
           <form id="form-profile">
-            <div class="admin-card">
+            <!-- 1. DEDICATED BRAND & LOGO SECTION -->
+            <div class="admin-card" style="border: 1px solid rgba(0, 242, 254, 0.4); box-shadow: 0 0 25px rgba(0, 242, 254, 0.08); margin-bottom: 24px;">
               <div class="admin-card-header">
                 <div>
-                  <h3 class="admin-card-title"><i class="fa-solid fa-id-card"></i> Kişisel & Marka Bilgileri</h3>
-                  <p class="admin-card-desc">Ana sayfadaki hero ve kart alanlarında görünen tanıtım bilgileriniz.</p>
+                  <h3 class="admin-card-title" style="color: #00f2fe;">
+                    <i class="fa-solid fa-gem"></i> Logo & Marka Kimliği Yönetimi
+                  </h3>
+                  <p class="admin-card-desc">Sitenin sol üst menüsündeki ve altındaki logo görselini ve hemen yanındaki marka yazısını buradan yönetin.</p>
                 </div>
                 <button type="submit" class="btn btn-primary btn-sm">
                   <i class="fa-solid fa-floppy-disk"></i> Değişiklikleri Kaydet
                 </button>
               </div>
 
-              <div class="form-grid">
+              <div class="form-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; align-items: start;">
+                
+                <!-- A: Logonun Yanındaki Yazı -->
                 <div class="form-group">
-                  <label class="form-label" for="prof-brand">Marka / Logo Adı</label>
-                  <input type="text" id="prof-brand" class="form-input" placeholder="MadTech">
+                  <label class="form-label" for="prof-brand" style="font-weight: 700; color: #fff; font-size: 0.95rem;">
+                    <i class="fa-solid fa-font" style="color: var(--primary);"></i> Logonun Yanındaki Yazı (Marka Adı)
+                  </label>
+                  <input type="text" id="prof-brand" class="form-input" placeholder="Madtech Studio" style="font-size: 1.05rem; font-weight: 600; border-color: rgba(0, 242, 254, 0.4);">
+                  <span class="form-helper">Header ve footer alanında logonun hemen sağında görüntülenen ana metindir. (Örn: <strong>Madtech Studio</strong>)</span>
                 </div>
 
+                <!-- B: Logo Yükleme Alanı -->
                 <div class="form-group">
-                  <label class="form-label">Site Marka Logosu (Header & Favicon)</label>
-                  <div style="display: flex; align-items: center; gap: 14px; background: rgba(7, 9, 14, 0.6); padding: 8px 14px; border-radius: var(--radius-md); border: 1px solid var(--admin-border);">
-                    <div style="width: 40px; height: 40px; border-radius: 9px; background: #fff; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 1.5px solid var(--primary); flex-shrink: 0;">
-                      <img id="prof-logo-preview" src="assets/logo.jpg" style="width: 100%; height: 100%; object-fit: cover;" alt="Logo Önizleme">
+                  <label class="form-label" style="font-weight: 700; color: #fff; font-size: 0.95rem;">
+                    <i class="fa-solid fa-image" style="color: var(--primary);"></i> Site Marka Logosu (Header & Favicon)
+                  </label>
+                  <div style="display: flex; align-items: center; gap: 16px; background: rgba(7, 9, 14, 0.7); padding: 14px 18px; border-radius: var(--radius-md); border: 1px dashed var(--admin-border-focus);">
+                    <!-- Logo Preview Thumbnail -->
+                    <div style="width: 54px; height: 54px; border-radius: 12px; background: #ffffff; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 2px solid var(--primary); box-shadow: 0 0 16px rgba(0,242,254,0.4); flex-shrink: 0;">
+                      <img id="prof-logo-preview" src="assets/logo.jpg" style="width: 100%; height: 100%; object-fit: contain;" alt="Logo Önizleme">
                     </div>
-                    <label class="btn btn-outline btn-sm" style="cursor: pointer; padding: 6px 12px; font-size: 0.78rem;">
-                      <i class="fa-solid fa-cloud-arrow-up"></i> Değiştir
-                      <input type="file" id="prof-logo-file" accept="image/*" style="display: none;">
-                    </label>
-                    <input type="hidden" id="prof-logo" value="assets/logo.jpg">
+
+                    <!-- Upload Controls -->
+                    <div style="flex: 1;">
+                      <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 6px;">
+                        <label class="btn btn-primary btn-sm" style="cursor: pointer; padding: 7px 14px; font-size: 0.82rem;">
+                          <i class="fa-solid fa-cloud-arrow-up"></i> Bilgisayardan Logo Yükle
+                          <input type="file" id="prof-logo-file" accept="image/*" style="display: none;">
+                        </label>
+                        <button type="button" class="btn btn-outline btn-sm" id="btn-toggle-logo-url" style="padding: 7px 12px; font-size: 0.82rem;">
+                          <i class="fa-solid fa-link"></i> Web URL ile Gir
+                        </button>
+                      </div>
+                      <span class="form-helper" style="font-size: 0.75rem;">PNG, JPG, SVG veya WebP formatında istediğiniz logoyu yükleyin.</span>
+                      <div id="logo-url-wrapper" style="display: none; margin-top: 10px;">
+                        <input type="text" id="prof-logo" class="form-input" placeholder="assets/logo.jpg veya https://..." style="font-size: 0.85rem;">
+                      </div>
+                    </div>
                   </div>
                 </div>
 
+              </div>
+
+              <!-- Live Header Preview Bar -->
+              <div style="margin-top: 20px; padding: 14px 20px; background: rgba(0, 242, 254, 0.05); border: 1px solid rgba(0, 242, 254, 0.2); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;">
+                <div style="font-size: 0.85rem; color: var(--text-muted);">
+                  <i class="fa-solid fa-eye" style="color: var(--primary);"></i> <strong>Canlı Menü Önizlemesi:</strong> Ziyaretçilerin sitenin üst menüsünde göreceği anlık görünüm:
+                </div>
+                <div style="display: inline-flex; align-items: center; gap: 12px; background: #07090e; padding: 10px 22px; border-radius: 12px; border: 1px solid rgba(0, 242, 254, 0.3); box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+                  <div style="width: 38px; height: 38px; border-radius: 10px; background: #fff; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 1.5px solid var(--primary); box-shadow: 0 0 14px rgba(0,242,254,0.4);">
+                    <img id="live-preview-logo-img" src="assets/logo.jpg" style="width: 100%; height: 100%; object-fit: contain;">
+                  </div>
+                  <span id="live-preview-brand-text" style="font-size: 1.25rem; font-weight: 800; color: #fff; letter-spacing: -0.5px;">
+                    Madtech Studio
+                  </span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- 2. PERSONAL INFO & HERO CONTENT -->
+            <div class="admin-card">
+              <div class="admin-card-header">
+                <div>
+                  <h3 class="admin-card-title"><i class="fa-solid fa-id-card"></i> Kişisel Bilgiler & Biyografi</h3>
+                  <p class="admin-card-desc">Ana sayfadaki hero bölümü ve hakkımda alanında görünen tanıtım bilgileriniz.</p>
+                </div>
+              </div>
+
+              <div class="form-grid">
                 <div class="form-group">
                   <label class="form-label" for="prof-name">Adınız Soyadınız</label>
                   <input type="text" id="prof-name" class="form-input" placeholder="Mehmet Ali Dağ">

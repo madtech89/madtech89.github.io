@@ -136,9 +136,14 @@ function populateAllFields() {
   setVal('prof-shortbio', p.shortBio);
   setVal('prof-about', p.aboutText);
 
+  setVal('prof-brand', p.brandName || 'Madtech Studio');
   setVal('prof-logo', p.logo || 'assets/logo.jpg');
   const logoPrev = document.getElementById('prof-logo-preview');
   if (logoPrev) logoPrev.src = p.logo || 'assets/logo.jpg';
+  const liveLogoImg = document.getElementById('live-preview-logo-img');
+  if (liveLogoImg) liveLogoImg.src = p.logo || 'assets/logo.jpg';
+  const liveBrandText = document.getElementById('live-preview-brand-text');
+  if (liveBrandText) liveBrandText.textContent = p.brandName || 'Madtech Studio';
 
   // Avatar live preview
   const avatarPrev = document.getElementById('prof-avatar-preview');
@@ -271,6 +276,38 @@ function initForms() {
   // Direct Logo File Upload & Compression
   setupImageUpload('prof-logo-file', 'prof-logo-preview', 'prof-logo', 300);
 
+  // Brand Name input live preview
+  const brandInput = document.getElementById('prof-brand');
+  const liveBrandText = document.getElementById('live-preview-brand-text');
+  if (brandInput && liveBrandText) {
+    brandInput.addEventListener('input', () => {
+      liveBrandText.textContent = brandInput.value.trim() || 'Madtech Studio';
+    });
+  }
+
+  // Logo URL Input live change & toggle
+  const logoInput = document.getElementById('prof-logo');
+  const liveLogoImg = document.getElementById('live-preview-logo-img');
+  if (logoInput) {
+    logoInput.addEventListener('input', () => {
+      const val = logoInput.value.trim();
+      if (val) {
+        const logoPreview = document.getElementById('prof-logo-preview');
+        if (logoPreview) logoPreview.src = val;
+        if (liveLogoImg) liveLogoImg.src = val;
+      }
+    });
+  }
+
+  const btnToggleLogo = document.getElementById('btn-toggle-logo-url');
+  const logoUrlWrapper = document.getElementById('logo-url-wrapper');
+  if (btnToggleLogo && logoUrlWrapper) {
+    btnToggleLogo.addEventListener('click', () => {
+      const isHidden = logoUrlWrapper.style.display === 'none';
+      logoUrlWrapper.style.display = isHidden ? 'block' : 'none';
+    });
+  }
+
   // Quick switch avatar buttons
   const btnUseLogo = document.getElementById('btn-use-logo-as-avatar');
   if (btnUseLogo) {
@@ -363,7 +400,14 @@ function setupImageUpload(fileInputId, previewImgId, hiddenInputId, maxDimension
         const compressedBase64 = canvas.toDataURL('image/jpeg', 0.88);
 
         if (previewImg) previewImg.src = compressedBase64;
-        if (hiddenInput) hiddenInput.value = compressedBase64;
+        if (hiddenInput) {
+          hiddenInput.value = compressedBase64;
+          hiddenInput.dispatchEvent(new Event('input'));
+        }
+        if (hiddenInputId === 'prof-logo') {
+          const liveLogo = document.getElementById('live-preview-logo-img');
+          if (liveLogo) liveLogo.src = compressedBase64;
+        }
 
         showToast('Fotoğraf başarıyla yüklendi ve optimize edildi!', 'success');
       };
@@ -383,7 +427,7 @@ function saveProfile() {
     .filter(Boolean);
 
   window.adminData.profile = {
-    brandName: getVal('prof-brand') || 'MadTech',
+    brandName: getVal('prof-brand') || 'Madtech Studio',
     name: getVal('prof-name') || 'Mehmet Ali Dağ',
     title: getVal('prof-title') || 'Full Stack Web Geliştirici',
     typedTitles: typedArr.length ? typedArr : ["Full Stack Geliştirici"],
@@ -1075,7 +1119,7 @@ function escapeHtml(str) {
 function getDefaultAdminTemplate() {
   return {
     profile: {
-      brandName: "MadTech",
+      brandName: "Madtech Studio",
       name: "Mehmet Ali Dağ",
       title: "Full Stack Web Geliştirici",
       typedTitles: ["Full Stack Geliştirici", "Modern Web Siteleri"],
