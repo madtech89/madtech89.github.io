@@ -301,20 +301,20 @@ function renderProjects(projects, activeCategory) {
 
   grid.innerHTML = filtered.map(p => `
     <div class="project-card" data-category="${p.category}" id="card-${p.id}">
-      <div class="project-img-box">
+      <div class="project-img-box" onclick="openProjectModal('${p.id}')" title="Detayları İncele">
         <img src="${escapeHtml(p.image || 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80')}" alt="${escapeHtml(p.title)}" loading="lazy">
         <span class="project-category-tag">${getCategoryName(p.category)}</span>
         ${p.featured ? '<span class="project-badge-featured">Öne Çıkan</span>' : ''}
+        <div class="project-overlay-hover">
+          <span><i class="fa-solid fa-eye"></i> Detayları İncele</span>
+        </div>
       </div>
       <div class="project-body">
-        <h3 class="project-title">${escapeHtml(p.title)}</h3>
-        <p class="project-summary">${escapeHtml(p.summary || '')}</p>
-        <div class="project-techs">
-          ${(p.technologies || []).map(t => `<span class="tech-badge">${escapeHtml(t)}</span>`).join('')}
-        </div>
+        <h3 class="project-title" onclick="openProjectModal('${p.id}')" title="${escapeHtml(p.title)}">${escapeHtml(p.title)}</h3>
+        <p class="project-summary" onclick="openProjectModal('${p.id}')">${escapeHtml(p.summary || '')}</p>
         <div class="project-actions">
           ${p.liveUrl ? `<a href="${escapeHtml(p.liveUrl)}" target="_blank" rel="noopener noreferrer" class="btn-card-primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> Canlı Site</a>` : ''}
-          <button class="btn-card-icon" title="Detayları İncele" onclick="openProjectModal('${p.id}')">
+          <button class="btn-card-icon" title="Detayları ve Teknolojileri İncele" onclick="openProjectModal('${p.id}')">
             <i class="fa-solid fa-eye"></i>
           </button>
           ${p.githubUrl ? `<a href="${escapeHtml(p.githubUrl)}" target="_blank" rel="noopener noreferrer" class="btn-card-icon" title="Kaynak Kod (GitHub)"><i class="fa-brands fa-github"></i></a>` : ''}
@@ -494,9 +494,20 @@ window.openProjectModal = function(id) {
   if (modalDesc) modalDesc.textContent = project.description || project.summary;
   
   if (modalTechs) {
-    modalTechs.innerHTML = (project.technologies || []).map(t => `
-      <span class="tech-badge" style="font-size: 0.85rem; padding: 6px 12px;">${escapeHtml(t)}</span>
-    `).join('');
+    if (project.technologies && project.technologies.length > 0) {
+      modalTechs.innerHTML = `
+        <div style="width: 100%; margin-bottom: 10px; font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--primary); display: flex; align-items: center; gap: 8px;">
+          <i class="fa-solid fa-microchip"></i> Kullanılan Teknolojiler & Altyapı
+        </div>
+        ${project.technologies.map(t => `
+          <span class="tech-badge">${escapeHtml(t)}</span>
+        `).join('')}
+      `;
+      modalTechs.style.display = 'flex';
+    } else {
+      modalTechs.innerHTML = '';
+      modalTechs.style.display = 'none';
+    }
   }
 
   if (modalLive) {
