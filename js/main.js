@@ -580,3 +580,28 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
 }
+
+// Stealth Admin Access: Keyboard shortcut (Cmd+Shift+A or Ctrl+Shift+A) & Logo Triple Click
+document.addEventListener('keydown', (e) => {
+  if ((e.metaKey || e.ctrlKey) && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+    e.preventDefault();
+    window.location.href = 'admin.html';
+  }
+});
+
+let logoClickCount = 0;
+let logoClickTimer = null;
+const logoBadge = document.querySelector('.logo-badge');
+if (logoBadge) {
+  logoBadge.addEventListener('click', (e) => {
+    e.preventDefault();
+    logoClickCount++;
+    clearTimeout(logoClickTimer);
+    if (logoClickCount >= 3) {
+      window.location.href = 'admin.html';
+      logoClickCount = 0;
+    } else {
+      logoClickTimer = setTimeout(() => { logoClickCount = 0; }, 600);
+    }
+  });
+}

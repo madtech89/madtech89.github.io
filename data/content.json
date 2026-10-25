@@ -126,7 +126,6 @@
     "siteUrl": "https://madtechstudio.github.io"
   },
   "settings": {
-    "adminPin": "1234",
     "githubRepo": "madtechstudio/madtechstudio.github.io",
     "githubBranch": "main"
   }

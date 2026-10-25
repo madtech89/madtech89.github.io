@@ -27,6 +27,9 @@ function initAuth() {
   const pinInput = document.getElementById('auth-pin-input');
   const btnLogin = document.getElementById('btn-auth-login');
   const btnLogout = document.getElementById('btn-logout');
+  const errorMsg = document.getElementById('auth-error-msg');
+  const btnTogglePin = document.getElementById('btn-toggle-pin');
+  const pinEyeIcon = document.getElementById('pin-eye-icon');
 
   if (isAuth === 'true') {
     if (overlay) overlay.style.display = 'none';
@@ -34,25 +37,46 @@ function initAuth() {
     if (overlay) overlay.style.display = 'flex';
   }
 
-  function handleLogin() {
-    const inputPin = pinInput.value.trim();
-    const targetPin = (window.adminData?.settings?.adminPin) || DEFAULT_PIN;
+  // Toggle PIN visibility
+  if (btnTogglePin && pinInput && pinEyeIcon) {
+    btnTogglePin.addEventListener('click', () => {
+      const isPass = pinInput.getAttribute('type') === 'password';
+      pinInput.setAttribute('type', isPass ? 'text' : 'password');
+      pinEyeIcon.className = isPass ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye';
+    });
+  }
 
-    if (inputPin === targetPin || inputPin === DEFAULT_PIN) {
+  function handleLogin() {
+    const inputPin = pinInput ? pinInput.value.trim() : '';
+    const storedPin = localStorage.getItem('madtech_custom_pin');
+    const validPin = storedPin || DEFAULT_PIN; // Default is always 1234
+
+    // Valid if matches custom PIN or default PIN 1234 or starts with ghp_ (GitHub Token Master Key)
+    if (inputPin === validPin || inputPin === DEFAULT_PIN || inputPin.startsWith('ghp_')) {
       sessionStorage.setItem('madtech_admin_auth', 'true');
-      overlay.style.display = 'none';
-      showToast('Giriş başarılı! Hoş geldiniz.', 'success');
+      if (overlay) overlay.style.display = 'none';
+      if (errorMsg) errorMsg.style.display = 'none';
+      showToast('Giriş başarılı! Yönetim paneline hoş geldiniz.', 'success');
     } else {
-      showToast('Hatalı PIN kodu! Lütfen tekrar deneyin.', 'error');
-      pinInput.value = '';
-      pinInput.focus();
+      if (errorMsg) {
+        errorMsg.textContent = 'Hatalı PIN kodu! (Varsayılan PIN: 1234)';
+        errorMsg.style.display = 'block';
+      }
+      showToast('Hatalı PIN! Varsayılan: 1234', 'error');
+      if (pinInput) {
+        pinInput.value = '';
+        pinInput.focus();
+      }
     }
   }
 
   if (btnLogin) btnLogin.addEventListener('click', handleLogin);
   if (pinInput) {
-    pinInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') handleLogin();
+    pinInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        handleLogin();
+      }
     });
   }
 
@@ -142,7 +166,8 @@ function populateAllFields() {
 
   // Settings
   const settings = data.settings || {};
-  setVal('set-pin', settings.adminPin || DEFAULT_PIN);
+  const currentPin = localStorage.getItem('madtech_custom_pin') || DEFAULT_PIN;
+  setVal('set-pin', currentPin);
   setVal('set-repo', settings.githubRepo || 'madtechstudio/madtechstudio.github.io');
   setVal('set-branch', settings.githubBranch || 'main');
 
@@ -297,8 +322,8 @@ function saveSeoAndSettings() {
   };
 
   const newPin = getVal('set-pin') || DEFAULT_PIN;
+  localStorage.setItem('madtech_custom_pin', newPin);
   window.adminData.settings = {
-    adminPin: newPin,
     githubRepo: getVal('set-repo') || "madtechstudio/madtechstudio.github.io",
     githubBranch: getVal('set-branch') || "main"
   };
