@@ -136,6 +136,10 @@ function populateAllFields() {
   setVal('prof-shortbio', p.shortBio);
   setVal('prof-about', p.aboutText);
 
+  setVal('prof-logo', p.logo || 'assets/logo.jpg');
+  const logoPrev = document.getElementById('prof-logo-preview');
+  if (logoPrev) logoPrev.src = p.logo || 'assets/logo.jpg';
+
   // Avatar live preview
   const avatarPrev = document.getElementById('prof-avatar-preview');
   if (avatarPrev && p.avatar) avatarPrev.src = p.avatar;
@@ -264,6 +268,30 @@ function initForms() {
   // Direct Profile Avatar File Upload & Compression
   setupImageUpload('prof-avatar-file', 'prof-avatar-preview', 'prof-avatar', 500);
 
+  // Direct Logo File Upload & Compression
+  setupImageUpload('prof-logo-file', 'prof-logo-preview', 'prof-logo', 300);
+
+  // Quick switch avatar buttons
+  const btnUseLogo = document.getElementById('btn-use-logo-as-avatar');
+  if (btnUseLogo) {
+    btnUseLogo.addEventListener('click', () => {
+      setVal('prof-avatar', 'assets/logo.jpg');
+      const img = document.getElementById('prof-avatar-preview');
+      if (img) img.src = 'assets/logo.jpg';
+      showToast('Avatar Instagram logosu olarak seçildi. Kaydetmeyi unutmayın!', 'success');
+    });
+  }
+
+  const btnUsePhoto = document.getElementById('btn-use-photo-as-avatar');
+  if (btnUsePhoto) {
+    btnUsePhoto.addEventListener('click', () => {
+      setVal('prof-avatar', 'assets/profile.jpg');
+      const img = document.getElementById('prof-avatar-preview');
+      if (img) img.src = 'assets/profile.jpg';
+      showToast('Avatar kişisel fotoğrafınız olarak seçildi. Kaydetmeyi unutmayın!', 'success');
+    });
+  }
+
   // Toggle Avatar URL Box
   const btnToggleAvatar = document.getElementById('btn-toggle-avatar-url');
   const avatarUrlWrapper = document.getElementById('avatar-url-wrapper');
@@ -361,7 +389,8 @@ function saveProfile() {
     typedTitles: typedArr.length ? typedArr : ["Full Stack Geliştirici"],
     shortBio: getVal('prof-shortbio'),
     aboutText: getVal('prof-about'),
-    avatar: getVal('prof-avatar'),
+    avatar: getVal('prof-avatar') || 'assets/logo.jpg',
+    logo: getVal('prof-logo') || 'assets/logo.jpg',
     phone: getVal('prof-phone'),
     whatsapp: getVal('prof-whatsapp'),
     email: getVal('prof-email'),
@@ -1052,7 +1081,8 @@ function getDefaultAdminTemplate() {
       typedTitles: ["Full Stack Geliştirici", "Modern Web Siteleri"],
       shortBio: "Modern ve hızlı web projeleri üretiyorum.",
       aboutText: "Yazılım geliştirme alanında modern çözümler sunuyorum.",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80",
+      avatar: "assets/logo.jpg",
+      logo: "assets/logo.jpg",
       phone: "+90 555 123 45 67",
       whatsapp: "905551234567",
       email: "iletisim@madtech.dev",

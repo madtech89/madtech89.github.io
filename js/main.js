@@ -195,11 +195,32 @@ function renderApp() {
   setText('profile-card-title', profile.title || '');
   setText('status-text', profile.status || 'Yeni Projelere Açık');
 
+  // Brand Logo
+  const logoUrl = profile.logo || 'assets/logo.jpg';
+  const logoImgs = document.querySelectorAll('.logo-img');
+  logoImgs.forEach(img => {
+    img.src = logoUrl;
+  });
+
+  // Favicon dynamic sync
+  const favIcon = document.querySelector('link[rel="icon"]');
+  if (favIcon && logoUrl) {
+    favIcon.href = logoUrl;
+  }
+
   // Avatar
   const avatarImg = document.getElementById('profile-avatar');
   if (avatarImg && profile.avatar) {
     avatarImg.src = profile.avatar;
     avatarImg.alt = profile.name || 'Profil Fotoğrafı';
+    const wrapper = avatarImg.closest('.avatar-wrapper');
+    if (wrapper) {
+      if (profile.avatar.includes('logo')) {
+        wrapper.classList.add('has-logo-avatar');
+      } else {
+        wrapper.classList.remove('has-logo-avatar');
+      }
+    }
   }
 
   // Contact Info

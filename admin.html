@@ -7,7 +7,7 @@
   <meta name="robots" content="noindex, nofollow">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%2300f2fe'/><text y='65' x='50' text-anchor='middle' font-size='50' font-family='sans-serif' font-weight='900' fill='%2307090e'>M</text></svg>">
+  <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
 
   <!-- Google Fonts & Font Awesome 6 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,8 +23,8 @@
   <!-- PIN Code Authentication Screen -->
   <div class="auth-overlay" id="auth-overlay">
     <div class="auth-card">
-      <div class="auth-icon">
-        <i class="fa-solid fa-shield-halved"></i>
+      <div class="auth-icon" style="background: #ffffff; width: 68px; height: 68px; padding: 6px; box-shadow: 0 0 25px rgba(0,242,254,0.45); border-radius: 16px; overflow: hidden; border: 2px solid rgba(0,242,254,0.7); margin: 0 auto 16px auto; display: flex; align-items: center; justify-content: center;">
+        <img src="assets/logo.jpg" alt="MadTech Logo" style="width: 100%; height: 100%; object-fit: contain;">
       </div>
       <h2 class="auth-title">MadTech Studio Yönetim</h2>
       <p class="auth-desc">İçerikleri düzenlemek için PIN kodunuzu girin.<br>(Varsayılan PIN: <code>1234</code>)</p>
@@ -63,7 +63,9 @@
     <aside class="admin-sidebar">
       <div class="sidebar-header">
         <div class="sidebar-brand">
-          <i class="fa-solid fa-cube" style="color: var(--primary);"></i>
+          <div style="width: 36px; height: 36px; border-radius: 9px; background: #fff; overflow: hidden; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 14px rgba(0,242,254,0.4); border: 1.5px solid rgba(0,242,254,0.6); flex-shrink: 0;">
+            <img src="assets/logo.jpg" alt="MadTech Logo" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
           <span>MadTech</span>
         </div>
         <span class="sidebar-badge">Admin</span>
@@ -177,6 +179,20 @@
                 </div>
 
                 <div class="form-group">
+                  <label class="form-label">Site Marka Logosu (Header & Favicon)</label>
+                  <div style="display: flex; align-items: center; gap: 14px; background: rgba(7, 9, 14, 0.6); padding: 8px 14px; border-radius: var(--radius-md); border: 1px solid var(--admin-border);">
+                    <div style="width: 40px; height: 40px; border-radius: 9px; background: #fff; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 1.5px solid var(--primary); flex-shrink: 0;">
+                      <img id="prof-logo-preview" src="assets/logo.jpg" style="width: 100%; height: 100%; object-fit: cover;" alt="Logo Önizleme">
+                    </div>
+                    <label class="btn btn-outline btn-sm" style="cursor: pointer; padding: 6px 12px; font-size: 0.78rem;">
+                      <i class="fa-solid fa-cloud-arrow-up"></i> Değiştir
+                      <input type="file" id="prof-logo-file" accept="image/*" style="display: none;">
+                    </label>
+                    <input type="hidden" id="prof-logo" value="assets/logo.jpg">
+                  </div>
+                </div>
+
+                <div class="form-group">
                   <label class="form-label" for="prof-name">Adınız Soyadınız</label>
                   <input type="text" id="prof-name" class="form-input" placeholder="Mehmet Ali Dağ">
                 </div>
@@ -260,8 +276,14 @@
                           <i class="fa-solid fa-cloud-arrow-up"></i> Bilgisayardan Fotoğraf Yükle
                           <input type="file" id="prof-avatar-file" accept="image/*" style="display: none;">
                         </label>
+                        <button type="button" class="btn btn-outline btn-sm" id="btn-use-logo-as-avatar" title="Instagram MT Logosunu profil resmi yapar">
+                          <i class="fa-solid fa-shield-halved" style="color: var(--primary);"></i> Instagram Logosunu Kullan
+                        </button>
+                        <button type="button" class="btn btn-outline btn-sm" id="btn-use-photo-as-avatar" title="Kişisel fotoğrafınızı profil resmi yapar">
+                          <i class="fa-solid fa-user" style="color: #a855f7;"></i> Kişisel Fotoğrafımı Kullan
+                        </button>
                         <button type="button" class="btn btn-outline btn-sm" id="btn-toggle-avatar-url">
-                          <i class="fa-solid fa-link"></i> Web Linkiyle Gir
+                          <i class="fa-solid fa-link"></i> URL ile Gir
                         </button>
                       </div>
                       <p style="color: var(--text-muted); font-size: 0.8rem;">
